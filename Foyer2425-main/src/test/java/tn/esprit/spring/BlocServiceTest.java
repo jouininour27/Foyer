@@ -3,12 +3,15 @@ package tn.esprit.spring;
 import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS) // Ajouté pour autoriser les méthodes non-static
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class) // Important pour que @Order fonctionne
+@ActiveProfiles("test")
+
 public class BlocServiceTest {
 
   @BeforeAll
