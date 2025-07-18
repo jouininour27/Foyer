@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-slim
+FROM openjdk:17-jdk-slim
 EXPOSE 8082
 
 # Copier le jar dans l'image Docker
