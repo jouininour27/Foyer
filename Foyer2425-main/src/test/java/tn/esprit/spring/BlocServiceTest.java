@@ -1,57 +1,57 @@
 package tn.esprit.spring;
 
-import org.junit.After;
 import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS) // Ajouté pour autoriser les méthodes non-static
 @RunWith(SpringRunner.class)
-@TestMethodOrder(MethodOrderer.class)
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class) // Important pour que @Order fonctionne
 public class BlocServiceTest {
 
-    @BeforeAll
-    void bedore() {
+  @BeforeAll
+  void bedore() {
+    // initialisation avant tous les tests
+  }
 
-    }
+  @AfterAll
+  void after() {
+    // nettoyage après tous les tests
+  }
 
-    @AfterAll
-    void after() {
+  @BeforeEach
+  void beforeEach() {
+    // avant chaque test
+  }
 
-    }
+  @AfterEach
+  void afterEach() {
+    // après chaque test
+  }
 
-    @BeforeEach
-    void beforeEach() {
+  @Order(1)
+  @RepeatedTest(4)
+  void test() {
+    // test répété
+  }
 
-    }
+  @Order(2)
+  @Test
+  void test3() {
+    // test 3
+  }
 
-    @AfterEach
-    void afterEach() {
+  @Order(3)
+  @Test
+  void test4() {
+    // test 4
+  }
 
-    }
-
-    @Order(1)
-    @RepeatedTest(4)
-    void test() {
-
-    }
-
-    @Order(4)
-    @Test
-    void test2() {
-
-    }
-
-    @Order(2)
-    @Test
-    void test3() {
-
-    }
-
-    @Order(3)
-    @Test
-    void test4() {
-
-    }
+  @Order(4)
+  @Test
+  void test2() {
+    // test 2
+  }
 }

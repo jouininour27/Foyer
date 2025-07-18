@@ -1,47 +1,38 @@
 package tn.esprit.spring;
 
-
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.MockitoAnnotations;
 
-@ExtendWith(MockitoExtension.class)
-@TestMethodOrder(MethodOrderer.class)
-@SpringBootTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class BlocServiceMockTest {
 
-    @BeforeEach
-    void beforeEach() {
+  @BeforeAll
+  void setup() {
+    MockitoAnnotations.openMocks(this);
+  }
 
-    }
+  @Order(1)
+  @Test
+  void test() {
+    // test unitaire simulé
+  }
 
-    @AfterEach
-    void afterEach() {
+  @Order(2)
+  @Test
+  void test3() {
+    // test 3
+  }
 
-    }
+  @Order(3)
+  @Test
+  void test4() {
+    // test 4
+  }
 
-    @Order(1)
-    @RepeatedTest(4)
-    void test() {
-
-    }
-
-    @Order(4)
-    @Test
-    void test2() {
-
-    }
-
-    @Order(2)
-    @Test
-    void test3() {
-
-    }
-
-    @Order(3)
-    @Test
-    void test4() {
-
-    }
+  @Order(4)
+  @Test
+  void test2() {
+    // test 2
+  }
 }
