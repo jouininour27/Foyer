@@ -1,4 +1,7 @@
-FROM ubuntu:latest
-LABEL authors="nourj"
+FROM openjdk:11-jdk-slim
+EXPOSE 8082
 
-ENTRYPOINT ["top", "-b"]
+# Copier le jar dans l'image Docker
+COPY target/Foyer-1.4.0-SNAPSHOT.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "/app.jar"]
